@@ -1,3 +1,5 @@
+# добавить raise для исключений (12, 20, 24)
+# добавить пере. операторов
 from abc import ABC, abstractmethod
 
 
