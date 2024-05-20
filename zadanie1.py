@@ -1,5 +1,5 @@
 import math
-
+# создать метод класса и реалтзовать внутри math.sqrt(p * (p - self.x) * (p - self.y) * (p - self.z))
 
 class Triad:
     def __init__(self, x=1, y=1, z=1):
