@@ -1,5 +1,13 @@
-# добавить raise для исключений (12, 20, 24)
-# добавить пере. операторов
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+# Создать абстрактный базовый класс Pair с виртуальными арифметическими операциями.
+# Создать производные классы FazzyNumber (нечеткое число) и Complex (комплексное число).
+
+# релизовать новый метод класса, для подсчёта углов, данный метод должен вызываться из других методов, в которых это требуется
+# добавить if __name__ == "__main__":
+# НЕОБЯЗАТЕЛЬНОЕ УСЛОВИЕ: последнюю строку реализовать через f-строку
+
 from abc import ABC, abstractmethod
 
 
@@ -10,19 +18,19 @@ class Pair(ABC):
 
     @abstractmethod
     def add(self, other):
-        pass
+        raise NotImplementedError("Этот метод должен быть переопределён в подклассе")
 
     @abstractmethod
     def subtract(self, other):
-        pass
+        raise NotImplementedError("Этот метод должен быть переопределён в подклассе")
 
     @abstractmethod
     def multiply(self, other):
-        pass
+        raise NotImplementedError("Этот метод должен быть переопределён в подклассе")
 
     @abstractmethod
     def divide(self, other):
-        pass
+        raise NotImplementedError("Этот метод должен быть переопределён в подклассе")
 
 
 class FuzzyNumber(Pair):
@@ -66,19 +74,14 @@ class ComplexNumber(Pair):
         ) / denominator
         return ComplexNumber(real, imaginary)
 
+if __name__ == "__main__":
+    fuzzy1 = FuzzyNumber(3, 0.1)
+    fuzzy2 = FuzzyNumber(5, 0.2)
+    fuzzy_sum = fuzzy1.add(fuzzy2)
+    print("Прстые числа:", fuzzy_sum.first, fuzzy_sum.second)
 
-fuzzy1 = FuzzyNumber(3, 0.1)
-fuzzy2 = FuzzyNumber(5, 0.2)
-fuzzy_sum = fuzzy1.add(fuzzy2)
-print("Прстые числа:", fuzzy_sum.first, fuzzy_sum.second)
-
-complex1 = ComplexNumber(2, 3)
-complex2 = ComplexNumber(1, -1)
-complex_product = complex1.multiply(complex2)
-print(
-    "Комплексные числа:",
-    complex_product.first,
-    "+",
-    complex_product.second,
-    "i",
-)
+    complex1 = ComplexNumber(2, 3)
+    complex2 = ComplexNumber(1, -1)
+    complex_product = complex1.multiply(complex2)
+    
+    print(f"Комплексные числа: {complex_product.first} + {complex_product.second}i")
